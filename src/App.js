@@ -1,8 +1,9 @@
-
-import ExpenseItem from "./Components/Expenseitm";
+import { useState } from "react";
 import NewExpense from "./Components/NewExpense";
-function App() {
-  const expenses = [
+import Expenses from "./Components/Expenses";
+
+const Dummyexpenses = [
+
     {
       id: 1,
       title: "Groceries",
@@ -24,32 +25,25 @@ function App() {
       date: new Date(2023, 6, 23),
       location: "KOLKATA",
     },
-    {
-      id: 4,
-      title: "Online Subscription",
-      amount: 9.99,
-      date: new Date(2019, 7, 16),
-      location: "AMRITSAR",
-    },
-  ];
-
-  // You can then use this array of expenses in your React application as needed.
-  return (
   
+
+  
+];
+
+function App() {
+  const [expenses, setExpenses] = useState(Dummyexpenses);
+
+  const takeData = (data) => {
+    // Update the state correctly by spreading the existing expenses and adding the new one
+    setExpenses((prevExpenses) => [...prevExpenses, data]);
+  };
+
+  return (
     <div>
-    <NewExpense/>
-    {expenses.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-        location={expense.location}
-      />
-    ))}
-  </div>
+      <NewExpense onReq={takeData} />
+      <Expenses items={expenses} />
+    </div>
   );
 }
 
 export default App;
-//check this code figure out why i m unable to render kolkata as location
