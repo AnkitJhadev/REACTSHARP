@@ -35,7 +35,7 @@ function App() {
 
   const takeData = (data) => {
     // Update the state correctly by spreading the existing expenses and adding the new one
-    setExpenses((prevExpenses) => [...prevExpenses, data]);
+    setExpenses((prevExpenses) => [data,...prevExpenses]);
   };
 
   return (

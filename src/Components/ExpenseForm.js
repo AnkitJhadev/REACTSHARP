@@ -56,7 +56,7 @@ function ExpenseForm(props) {
       </div>
       <div className="new-expense__control">
         <label>DATE</label>
-        <input type="text" value={enteredDate} onChange={dateHandler} />
+        <input type="date" value={enteredDate} onChange={dateHandler} />
       </div>
       <div className="new-expense__actions">
         <button>SUBMIT</button>
